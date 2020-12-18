@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.daoko.mapper.statMapper">
+	<!-- 회사별 전체 통계 조회 -->
+	<select id="listcorp" resultType="kr.daoko.dto.StatCorpDTO">
+		select count(case when l.status=0 then 1 end) as car_in , count(case when l.status=1 then 1 end) as car_out, h.corp
+		from log l
+		inner join hr h
+		on l.plate = h.plate
+		group by h.corp
+	</select>
+	
+	<!-- 년도별 통계 조회  -->
+   <select id="listYear" parameterType="HashMap" resultType="kr.daoko.dto.StatPeriodDTO">
+      select date_format(time, '%Y') as period, count(case when status=0 then 1 end) as car_in , count(case when status=1 then 1 end) as car_out
+      from log
+      where date_format(time, '%Y') &gt;= #{end} and date_format(time, '%Y') &lt;= #{start}
+      group by date_format(time, '%Y')
+   </select>
+   
+   <!-- 월별 통계 조회  -->
+   <select id="listMonth" parameterType="HashMap" resultType="kr.daoko.dto.StatPeriodDTO">
+      select date_format(time, '%Y.%m') as period, count(case when status=0 then 1 end) as car_in , count(case when status=1 then 1 end) as car_out
+      from log
+      where date_format(time, '%Y.%m') &gt;= #{end} and date_format(time, '%Y.%m') &lt;= #{start}
+      group by date_format(time, '%Y.%m')
+   </select>
+   
+   <!-- 일별 통계 조회  -->
+   <select id="listDay" parameterType="HashMap" resultType="kr.daoko.dto.StatPeriodDTO">
+      select date_format(time, '%Y.%m.%d') as period, count(case when status=0 then 1 end) as car_in , count(case when status=1 then 1 end) as car_out
+      from log
+      where date_format(time, '%Y.%m.%d') &gt;= #{end} and date_format(time, '%Y.%m.%d') &lt;= #{start}
+      group by date_format(time, '%Y.%m.%d')
+   </select>
+	
+	<!-- 시간별 통계 조회  -->
+   <select id="listTime" parameterType="String" resultType="kr.daoko.dto.StatPeriodDTO">
+      select date_format(time, '%H') as period, count(case when status=0 then 1 end) as car_in , count(case when status=1 then 1 end) as car_out
+      from log
+      where date_format(time, '%Y.%m.%d') = #{period}
+      group by date_format(time, '%H')
+   </select>
+   
+   <!-- 회사에 따른 사원별 통계 -->
+   <select id="listHr" resultType="kr.daoko.dto.StatPeriodDTO">
+		select count(case when l.status=0 then 1 end) as car_in , count(case when l.status=1 then 1 end) as car_out, h.ssn
+		from log l
+		inner join hr h
+		on l.plate = h.plate
+		where h.corp = #{corp}
+		group by h.ssn
+	</select>
+	
+	<!-- 사원에 따른 년도별 통계 -->
+	<select id="statYear" parameterType="String" resultType="kr.daoko.dto.StatPeriodDTO">
+		select date_format(l.time, '%Y') as period, count(case when l.status=0 then 1 end) as car_in , count(case when l.status=1 then 1 end) as car_out
+		from log l, hr h
+		where h.ssn = #{ssn} and l.plate = h.plate
+		group by date_format(time, '%Y')
+	</select>
+   
+	<!-- 월별 통계 조회  -->
+	<select id="statMonth" parameterType="String" resultType="kr.daoko.dto.StatPeriodDTO">
+		select date_format(l.time, '%Y.%m') as period, count(case when l.status=0 then 1 end) as car_in , count(case when l.status=1 then 1 end) as car_out
+		from log l, hr h
+		where date_format(time, '%Y') = date_format(CURDATE(), '%Y') and h.ssn = #{ssn} and l.plate = h.plate
+		group by date_format(time, '%Y.%m')
+	</select>
+   
+	<!-- 일별 통계 조회  -->
+	<select id="statDay" parameterType="String" resultType="kr.daoko.dto.StatPeriodDTO">
+		select date_format(l.time, '%Y.%m.%d') as period, count(case when l.status=0 then 1 end) as car_in , count(case when l.status=1 then 1 end) as car_out
+		from log l, hr h
+		where date_format(time, '%Y.%m') = date_format(CURDATE(), '%Y.%m') and h.ssn = #{ssn} and l.plate = h.plate
+		group by date_format(time, '%Y.%m.%d')
+	</select>
+	
+	<!-- 시간별 통계 조회  -->
+	<select id="statTime" parameterType="String" resultType="kr.daoko.dto.StatPeriodDTO">
+		select date_format(l.time, '%H') as period, count(case when l.status=0 then 1 end) as car_in , count(case when l.status=1 then 1 end) as car_out
+		from log l, hr h
+		where date_format(time, '%Y.%m.%d') = date_format(CURDATE(), '%Y.%m.%d') and h.ssn = #{ssn} and l.plate = h.plate
+		group by date_format(time, '%H')
+	</select>
+   
+	<!-- 오늘 입/출차량 조회 -->
+	<select id="statToday" resultType="kr.daoko.dto.StatDTO">
+		select count(case when status=0 then 1 end) as car_in , count(case when status=1 then 1 end) as car_out
+		from log
+		<![CDATA[where time >= current_date() and time < date_add(current_date(), interval 1 day)]]>
+	</select>
+</mapper>

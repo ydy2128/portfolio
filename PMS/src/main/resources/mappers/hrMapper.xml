@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.daoko.mapper.hrMapper">
+	<!-- 회원 추가 -->
+	<insert id="adduser">
+		insert into hr(ssn, pw, name, tel, corp, plate, auth)
+		values(#{ssn}, #{pw}, #{name}, #{tel}, #{corp}, #{plate}, #{auth})
+	</insert>
+	
+	<!-- 로그인 과정 -->
+	<select id="loginCheck" resultType="kr.daoko.dto.HrDTO">
+		select ssn, pw, name
+		from hr
+		where ssn = #{ssn}
+	</select>
+	
+	<!-- 사용자 목록 -->
+	<select id="listuser" resultType="kr.daoko.dto.HrDTO">
+		select ssn, name, tel, corp, plate
+		from hr
+	</select>
+	
+	<!-- 사용자 정보 -->
+	<select id="viewuser" resultType="kr.daoko.dto.HrDTO">
+		select ssn, name, tel, corp, plate, auth
+		from hr
+		where ssn = #{ssn}
+	</select>
+	
+	<!-- 사용자 수정 -->
+	<update id="modifyuser">
+		update hr
+		set
+			name = #{name},
+			tel = #{tel},
+			corp = #{corp},
+			plate = #{plate},
+			auth = #{auth}
+		where ssn = #{ssn}
+	</update>
+</mapper>

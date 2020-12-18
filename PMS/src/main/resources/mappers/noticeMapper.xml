@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.daoko.mapper.noticeMapper">
+	<!-- notice 조회 -->
+	<select id="listNotice" resultType="kr.daoko.dto.NoticeDTO">
+		select idx, title, content, author, postdate, hit
+		from notice
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='all' and keyword != null and keyword != '' ">
+				and title like concat('%', #{keyword}, '%') or content like concat('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='title' and keyword != null and keyword != '' ">
+				and content like concat('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='content' and keyword != null and keyword != '' ">
+				and content like concat('%', #{keyword}, '%')
+			</if>
+		</trim>
+	</select>
+	
+	<!-- notice 총 개수 조회 -->
+	<select id="noticeCnt" resultType="int">
+		select count(*) as listCnt
+		from notice
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="keyword != null and keyword != '' ">
+				<if test="searchType=='all'">
+					and title like concat('%', #{keyword}, '%') or content like concat('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='title'">
+					and title like concat('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='content'">
+					and content like concat('%', #{keyword}, '%')
+				</if>
+			</if>
+		</trim>
+	</select>
+      
+	<!-- 해당 notice 글 내용 조회 -->
+	<select id="viewNotice" resultType="kr.daoko.dto.NoticeDTO">
+		select idx, title, content, author, postdate, hit
+		from notice
+		where idx = #{idx}
+	</select>
+	
+	<!-- notice 작성 -->
+	<insert id="insertNotice" parameterType="kr.daoko.dto.NoticeDTO">
+		insert into notice(title, content)
+		values(#{title}, #{content})
+	</insert>
+      
+      <!-- 해당 notice 조회수 up -->
+      <update id="hitUp">
+      	update notice
+      	set hit = hit + 1
+      	where idx = #{idx}
+      </update>
+      
+      <!-- 해당 notice 수정 -->
+      <update id="modifyNotice" parameterType="kr.daoko.dto.NoticeDTO">
+      	update notice
+      	set title = #{title}, content = #{content}
+      	where idx = #{idx}
+      </update>
+      
+      <!-- 해당 notice 삭제 -->
+      <delete id="removeNotice" parameterType="int">
+      	delete from notice
+      	where idx = #{idx}
+      </delete>
+</mapper>
