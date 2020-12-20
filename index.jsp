@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <!--
 	Industrious by TEMPLATED
@@ -14,7 +16,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="is-preload">
-	
+
 		<!-- Header -->
 			<header id="header">
 				<a class="logo" href="index.html">Portfolio</a>
@@ -35,138 +37,73 @@
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
-					<h1>Portfolio by YuDaYeon</h1>
-					<p>이 사이트를 만들 때 사용한 템플릿 : <a href="https://templated.co/">TEMPLATED</a><br>html, css, javascript 기반 제작</p>
+					<h1>Industrious</h1>
+					<p>A responsive business oriented template with a video background<br />
+					designed by <a href="https://templated.co/">TEMPLATED</a> and released under the Creative Commons License.</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
 			</section>
-			
-		<!-- introduce -->
-			<section class="wrapper" align="center">
-				<div class="inner">
-					<h2>자기소개</h2>
-					<p>자기소개</p>
-				</div>
-			</section>
-			
-		<!-- CTA -->
-			<section id="cta" class="wrapper">
-				<div class="inner">
-					<h2>used tools&skills</h2>
-					<p>사용해봤던 개발 도구들과 개발 언어 능력을 소개해드립니다.</p>
-				</div>
-			</section>
-			
-		<!-- used tools -->
-			<section class="wrapper" align="center">
+
+		<!-- Highlights -->
+			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<h2>used tools</h2>
-						<p><h3>os</h3>
-							<img alt="" src="images/windows_icon.png">
-							<img alt="" src="images/ubuntu_icon.png">
-						</p>
-						<p><h3>server</h3>
-							<img alt="" src="images/apache_icon.png">
-						</p>
-						<p><h3>framework</h3>
-							<img alt="" src="images/spring_icon.png">
-							<img alt="" src="images/mybatis_icon.png">
-						</p>
-						<p><h3>database</h3>
-							<img alt="" src="images/oracle_icon.png">
-							<img alt="" src="images/mysql_icon.png">
-							<img alt="" src="images/mariadb_icon.png">
-						</p>
-						<p><h3>tool</h3>
-							<img alt="" src="images/eclipse_icon.png">
-							<img alt="" src="images/unity_icon.png">
-							<img alt="" src="images/androidstudio_icon.png">
-							<img alt="" src="images/visualstudio_icon.png">
-							<img alt="" src="images/sqldeveloper_icon.png">
-							<img alt="" src="images/datagrip_icon.png">
-							<img alt="" src="images/git_icon.png" style="height:100dp;">
-							<img alt="" src="images/ftp_icon.png" style="height:100dp;">
-							<img alt="" src="images/sublimetext_icon.png">
-						</p>
-					</header><p><br>
-					
-					<!-- Skills -->
-					<h2>Skills</h2>
-					<h3>programming language</h3>
-						<ul class="icons">
-							<li><img alt="" src="images/java_icon.png" style="width:100px;"><p>Java<br><progress value="90" max="100"></progress></p></li>
-							<li><img alt="" src="images/javascript_icon.png" style="width:100px;"><p>JavaScript<br><progress value="90" max="100"></progress></p></li>
-							<li><img alt="" src="images/csharp_icon.png" style="width:100px;"><p>C#<br><progress value="90" max="100"></progress></p></li>
-							<li><img alt="" src="images/cplusplus_icon.png" style="width:100px;"><p>C++<br><progress value="90" max="100"></progress></p></li>
-							<li><img alt="" src="images/php_icon.png" style="width:100px;"><p>PHP<br><progress value="90" max="100"></progress></p></li>
-							<li><img alt="" src="images/python_icon.png" style="width:100px;"><p>Python<br><progress value="90" max="100"></progress></p></li>
-						</ul>
-					</div>
-				</section>
-				
-		<!-- CTA -->
-			<section id="cta" class="wrapper">
-				<div class="inner">
-					<h2>History</h2>
-					<p>개발자로서 발전되어가는 제 역사를 소개합니다.</p>
-				</div>
-			</section>
-			
-			<!-- github link -->
-			<section class="wrapper">
-				<div class="inner">
-				</div>
-			</section>
-				
-		<!-- CTA -->
-			<section id="cta" class="wrapper">
-				<div class="inner">
-					<h2>github link</h2>
-					<p>각각 깃허브와 링크되어있기 때문에 클릭하시면 해당 깃허브 주소로 넘어갑니다.</p>
-				</div>
-			</section>
-			
-			<!-- github link -->
-			<section class="wrapper">
-				<div class="inner">
+						<h2>Sem turpis amet semper</h2>
+						<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor.</p>
+					</header>
 					<div class="highlights">
-						<section style="width:50%;">
+						<section>
 							<div class="content">
 								<header>
-									<a href="https://github.com/macarpig/MyShop-BO"><img alt="" src="images/github_icon.png"></a>
-									<h3>MyShop-BO</h3>
+									<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
+									<h3>Feugiat consequat</h3>
 								</header>
-								<p>운영하는 쇼핑몰 관리하기 위한 시스템</p>
+								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
 							</div>
 						</section>
-						<section style="width:50%;">
+						<section>
 							<div class="content">
 								<header>
-									<a href="https://github.com/macarpig/PMS"><img alt="" src="images/github_icon.png"></a>
-									<h3>PMS</h3>
+									<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
+									<h3>Ante sem integer</h3>
 								</header>
-								<p>주차 번호판 인식 후 등록되는 주차 정보 또는 주차 회원 관리하는 시스템</p>
+								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
 							</div>
 						</section>
-					</div>
-					<div class="highlights">
-						<section style="width:50%;">
+						<section>
 							<div class="content">
-								<a href="https://github.com/macarpig/KM_AF_SHOP"><img alt="" src="images/github_icon.png"></a>
 								<header>
-									<h3>KM_AF_SHOP</h3>
+									<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
+									<h3>Ipsum consequat</h3>
 								</header>
-								<p>일반 쇼핑몰 사이트처럼 쇼핑할 수 있는 사이트</p>
+								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
 							</div>
 						</section>
-						<section style="width:50%;">
+						<section>
 							<div class="content">
-								<a href="https://github.com/sssueing/Oorstory_application"><img alt="" src="images/github_icon.png"></a>
 								<header>
-									<h3>Oorstory_application</h3>
+									<a href="#" class="icon fa-line-chart"><span class="label">Icon</span></a>
+									<h3>Interdum gravida</h3>
 								</header>
-								<p>자전거를 타면서 여행할 수 있는 안드로이드 ar게임</p>
+								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="#" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
+									<h3>Faucibus consequat</h3>
+								</header>
+								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="#" class="icon fa-qrcode"><span class="label">Icon</span></a>
+									<h3>Accumsan viverra</h3>
+								</header>
+								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
 							</div>
 						</section>
 					</div>
